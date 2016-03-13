@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	<!-- 指定默认的编码,相当于调用request的setCharacterEncoding方法 -->
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	
+	<constant name="struts.configuration.xml.reload" value="true"/>
+	
+	<constant name="struts.devMode" value="true"/>
+	
+	<constant name="struts.ui.theme" value="simple" />
+	<!-- 把Action对象交给Spring创建和管理 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- Struts2处理的请求后缀,默认值是action -->
+	<!-- <constant name="struts.action.extension" value="do" /> -->
+	
+	<package name="zxc" extends="struts-default">
+		<!-- 
+		<default-action-ref name="indexPage"/>
+		
+		<global-results>
+			<result name="exceptionPage">/error/exceptionPage.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="exceptionPage" exception="java.lang.Exception"/>
+		</global-exception-mappings> -->
+		
+		<action name="userAction_*" class="com.zxc.action.StudentAction" method="{1}">
+			<result name="index">pages/student/index.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="personinfo">pages/student/inforMaintenance1.jsp</result>
+			<result name="stuevaluate">pages/student/inforModify.jsp</result>
+			<result name="scoreinfo">/scoreinfo.jsp</result>
+			<result name="savesuccess">pages/student/index.jsp</result>
+			<result name="evaluate">pages/evaluate/pages/evaluate.jsp</result>
+			<result name="evasave">pages/student/index.jsp</result>
+			<result name="exit">login.jsp</result>
+		</action>
+	</package>
+	
+</struts>

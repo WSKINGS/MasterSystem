@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>课程评价</title>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  <div class="container">
+    <div><h1>课程评价 <small>已评价 1 门；未评价 1 门</small></h1></div>
+	<div class="panel panel-default">
+	  <div class="panel-body">
+	  为了解教学情况，请根据你对本门课程教师教学的感受，认真、实事求是地回答下列问题。本评价只用于评估学校整体教学质量，对个人评价内容实行匿名保护。谢谢你的合作！
+	  </div>
+	</div>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>教学班名称</th>
+				<th>课程代码</th>
+				<th>课程名称</th>
+				<th>课程类别</th>
+				<th>授课老师</th>
+				<th>状态</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>21-081200-B01-07</td>
+				<td>计算理论</td>
+				<td>专业必修课</td>
+				<td>何雨果、王兴</td>
+				<td>未评价</td>
+				<td><a href="evaluate.html">进行评价</a></td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>21-000001-A01-00</td>
+				<td>科学道德与学术诚信</td>
+				<td>公共必修课</td>
+				<td>翟杰全</td>
+				<td>已评价</td>
+				<td><a href="evaluate.html">修改评价</a></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<div class="form-group">
+			<button type="button" class="btn btn-default"  onclick="alert('请先完成所有课程评价！')">提交</button>
+		</div>
+	</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+  </body>
+</html>

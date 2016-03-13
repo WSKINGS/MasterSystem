@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* CSS Document */
+.content{ width:100%; height:auto; overflow:hidden; margin-top:20px; }
+.content .content_i{ background:#fff; height:auto; overflow:hidden; width:1280px; margin: 0 auto;border:1px solid #d8d8d8;}
+body{ background:#f0f0f0;}
+  dl{ display:block;float:left; width:260px; height:auto; overflow:hidden; margin-top:30px;}
+  dl dt{ font-size:13px; font-weight:bold; width:260px; height:26px; line-height:26px; text-align:left;}
+  dl dd{ float:left; width:260px; height:26px; line-height:26px; text-align:left; font-size:13px; margin:3px 0px; }
+  dl dd span{  margin-left:5px;} 
+   

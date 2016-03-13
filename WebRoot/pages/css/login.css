@@ -1,0 +1,53 @@
+@charset "utf-8";
+.header{width:100%; height:113px;}
+.header .header_i{width:960px; height:113px;margin:0 auto;}
+.header .header_i p{float:left;}
+.header .header_i p.logo{margin-left:8px; margin-top:22px;}
+.header .header_i p.logotext{margin-top:34px; margin-left:12px;}
+
+
+
+.mainwrap{width:100%;height:515px; background:#00659d; }
+.mainwrap .mainbox{width:960px;height:515px;position:relative; background:url(../images/bg.png) no-repeat center center;}
+.mainbox .login{width:372px;overflow:hidden;padding-bottom:15px;background: url(../images/login.png) no-repeat;position: absolute;right: 0;top:88px;height:376px;_height:386px; border-radius:5px;}
+.mainbox .login h2{font-size:20px;font-weight:bold;color:#666;margin-bottom:17px;}
+
+
+.mainbox .login{width:402px;overflow:hidden;padding-bottom:15px;background:#fff;position: absolute;right: 0;top:88px;height:360px;_height:370px;}
+.log-user{position:relative;width:336px;margin: 0 auto;padding-top:25px;}
+.log-user h2{font-size:20px;font-weight:bold;color:#666;margin-bottom:17px;}
+.log-user p{height:25px;line-height:25px;background:#fff6d2 url(../images/jg_03.jpg) no-repeat 6% center;font-size:13px;color:#999;border:1px solid #ffeda3;text-align:center;padding-left:18px;}
+.log-user p img{margin-top:-4px;}
+.log-user .userinput{width:336px;}
+.userinput .username,.userinput .userpw{height:38px;border:1px solid #bdbdbd;}
+.userinput .username span,.userinput .userpw span{display:inline-block;width:38px;height:38px;border-right:1px solid #bdbdbd; background:#f3f3f3; text-align:center;}
+
+.userinput .username input,.userinput .userpw input{width:288px;height:38px;line-height:38px;border:none;font-size:16px;color:#999; float:left;border:0;padding-left:5px;font-size:14px;}
+.userinput .identifying-code{width:258px;height:34px;}
+.userinput .identifying-code .yzm{width:104px;height:30px;vertical-align: middle;line-height:30px;border:1px solid #bdbdbd;padding-left:5px;font-size:14px;}
+
+.identifying-code input{font-size:16px;color:#999;}
+.identifying-code .footsize{font-size:15px;color:#2aacd6;}
+.identifying-code .footsize:hover{text-decoration:underline;}
+.userinput .auto span{float:right;}
+.userinput .auto span a{color:#666;}
+.userinput .auto{font-size:14px;color:#666;}
+.userinput .auto input{vertical-align:middle;}
+.log-user .logbtn{height:47px; background:#25a9d4;}
+.log-user .logbtn a{text-align:center;height:47px;line-height:47px;display:block;color:#fff;}
+.userinput .auto-zc{font-size:14px; color:#666; display:block; cursor:pointer;}
+.userinput .auto-zc:hover{text-decoration:underline;}
+/*二维码*/
+.login  .qr-code{height:285px;padding-top:43px;margin:0 auto; display:none;}
+.login  .qr-code h4{ text-align:center;font-size:28px;color:#999; font-weight:normal;}
+.login  .qr-code p{font-size:20px; text-align:center;line-height:30px;color:#999;}
+.login  .qr-code .qr-line{width:177px;height:169px;border:1px solid #f4f4f4;margin:0 auto;padding-top:12px;}
+.login  .qr-code .qr-psw{ position:relative;}
+.login  .qr-code .qr-psw a{font-size:14px;color:#a0a0a0;}
+.login  .qr-code .qr-psw .ts{ position:absolute;top:25px;right:95px;}
+.login  .qrswitch{position:absolute;right:0;z-index:100;}
+.login  .qrswitch_logo{position:absolute;top:0;right:10px;width:51px;height:77px;background:url(../images/pull_2.gif) no-repeat;outline:none;*hide-focus:expression(this.hideFocus=true);}
+.login  .qrswitch_logo_qr{position:absolute;right:20px;width:40px;height:50px;background:url(../images/pull_3.gif) no-repeat;outline:none;*hide-focus:expression(this.hideFocus=true);}
+/****footer***/
+.loginfooter p{ width:960px;height:20px; text-align:center; color:#a0a0a0;font-size:14px;}
+

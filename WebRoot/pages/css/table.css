@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */
+
+table{width:966px; height:auto;ovflow:hidden; margin-top:20px; margin-bottom:20px;}
+table tr{ width:966px;height:auto; overflow:hiiden;}
+table tr td { height:41px; line-height:41px; text-align:center; font-size:13px; color:#000000; border:1px solid #e4e4e4;}
+table tr td a{ color:#00F; text-decoration:underline;}
+table tr.header1{ background:#efefef;}
+.menu1{ height:80px; width:966px; border:1px solid #e4e4e4;}
+.menu1 dd{ height:40px; width:966px; border_bottom:1px solid #e4e4e4;}
+.selction{width:100px; display:block; float:left; height:16px; margin-left:10px;margin-top:14px; font-size:12px;line-height:16px;}
+.text{width:166px; height:23px; float:left; margin-top:14px; margin-left:10px;  diplay:block;}
+.menu1 dd a{float:left; margin:0 10px; width:50px; height:22px; line-height:22px; text-align:center; color:
+#fff; background:#0068b7; font-size:13px; border-radius:3px; display:block; margin-top:10px; margin-left:14px;}
+.menu1 dd a.reset{ background:#d4d1d1; color:#000000;}
+table tr td input[type="text"]{ width:127px; height:21px;}
+table tr td span{ width:75px; display:inline-block; height:21px; text-align:right; line-height:21px; margin-right:5px;}
+.btn-center1{ width:198px; height:22px; margin: 0 333px;}
+.btn-center1 a{width:50px; display:block; margin-right:10px; float:left; height:22px; line-height:22px; text-align:center; color:
+#fff; background:#0068b7; font-size:13px; border-radius:3px;}
+.btn-center1 a.back{background:#d4d1d1; color:#000000;}
+
+.course{width:956px;height:60px; text-align:left; padding:  5px; margin-top:15px; 
+ line-height:20px; padding-top:23px; font-size:13px; border:1px #e4e4e4 solid;}
+ .tj{ width:50px; height:25px; line-height:25px; text-align:center; font-size:13px; color:#fff; display:block; background:#0068b7; margin-top:20px;}

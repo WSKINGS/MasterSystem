@@ -1,0 +1,49 @@
+@charset "utf-8";
+body{ background:#f0f0f0;}
+/*headr*/
+.header{ width:100%; height: 89px; background:url(../images/bg1.png) no-repeat 0 0; background-size:100% 100%;  }
+.header .header_i{ background: url(../images/top.png) no-repeat 0 0; height: 89px; width:1280px; margin: 0 auto; max-width:1280px;}
+.header .header_i p.logo,.header .header_i p.logotext{ float: left;}
+.header .header_i p.login{float: right;}
+.header .header_i p.login span{ width:66px; height: 90px; display: inline-block; vertical-align: middle; text-align: center; line-height: 90px; font-size: 13px; color: #fff; font-family: "宋体";}
+.header .header_i p.login em{ margin-left:4px; color: #fff; margin-top: -1px; display: inline-block;}
+.header .header_i p.login span a{float: left; color: #fff; margin-left: 10px;}
+.role{ color:#f0d708!important; cursor: pointer;}
+.header .header_i .logo img{ display: block-inline; height: 60px; width: 60px; margin-left:29px; margin-top: 18px;}
+.header .header_i .logotext img{ display: block-inline;  margin-left:29px; margin-top: 34px;}
+/*content*/
+.content{ width:100%; height:auto; overflow:hidden; margin-top:20px; }
+.content .content_i{ background:#fff; height:auto; overflow:hidden; width:1280px; margin: 0 auto;border:1px solid #d8d8d8;}
+/*menu*/
+.content .content_i .menu{ height:661px; width: 202px; background: #0058ac; float: left;}
+.content .content_i .menu ul{ width: 202px; height: auto; overflow: hidden;}
+.content .content_i .menu ul li{ width: 202px; height:auto; overflow:hidden; background: #0058ac url(../images/crow1.png)  90% 25px no-repeat;  cursor:pointer; border-bottom:#2d8eea 1px solid; border-top: 1px solid #0c4479;}
+.content .content_i .menu ul li.current{ background:#fff url(../images/crow.png) 90% center no-repeat;}
+.content .content_i .menu ul li.current span{color: #333;}
+.content .content_i .menu ul li i img{ display:inline-block; float:left; margin-left:24px; margin-top:18px; margin-right:18px;}
+.content .content_i .menu ul li span{ display:inline-block; float:left; height:64px; font-size: 16px; color: #fff; line-height:64px; width:120px; text-align:left;}
+.content .content_i .menu ul li ul{ width:202px; height: auto; overflow: hidden; background:#fff;}
+.content .content_i .menu ul li ul li{ width:202px; height: 56px; line-height: 56px;text-align: center; background:none; border:none;}
+.content .content_i .menu ul li ul li a{ width:202px; padding-left: 4px; height: 56px; line-height: 56px;text-align: center; color: #000000; font-size: 14px;} 
+.content .content_i .menu ul li ul li a.cur{color:#0056aa;}
+.content .content_i .menu ul li a.active{width: 202px; height:auto; overflow:hidden; display:block;   background: #0058ac url(../images/crow2.png)  91% 28px no-repeat;}
+.content .content_i .menu ul li a.inactive{ width: 202px; height:auto; overflow:hidden; display:block;  background: #0058ac url(../images/crow1.png) 90% 25px no-repeat; 0 0 no-repeat;}
+
+/*content_r*/
+.content_r{ width:auto; float: left; height:auto; overflow: hidden; margin-left: 60px; position:relative;}
+.content_r .line{width:963px; height:55px; border-bottom:2px #dbddde solid;}
+.content_r .line span{ height: 56px; width: 200px; line-height: 60px; text-align: center; border-bottom: 2px solid #0068b7;padding-bottom: 14px; padding-left: 3px;}
+.content_r dl{width:963px; height:auto; overflow:hidden; margin-top:30px;}
+.content_r dd{width:129px; float:left; height:auto; overflow:hidden;margin-right:60px;} 
+.content_r dd span{ display:inline-block; width:129px ;height:40px; line-height:40px; text-align:center; font-size:12px; color:#000000;} 
+/*footer*/
+.footer{ width:100%; height: 91px;  margin-top:20px; background:#0056ab;}
+.footer .footer_i{  height: 91px; width:1280px; background:url(../images/footer.png) no-repeat 0 0; margin: 0 auto;}
+.footer .footer_i p{ width: 1280px; height:50px; line-height: 50px; text-align: center; font-size: 12px; font-family: "宋体"; color: #000000;}
+.btn-center1{ width:198px; height:22px; margin: 0 43px;}
+.btn-center1 a{width:50px; display:block; margin-right:10px; float:left; height:22px; line-height:22px; text-align:center; color:
+#fff; background:#0068b7; font-size:13px; border-radius:3px;}
+.btn-center1 a:hover{color:#fff; text-decoration:none;}
+.btn-center1 a.back{background:#d4d1d1; color:#000000;}
+
+
