@@ -1,7 +1,8 @@
 eclipse.preferences.version=1
+encoding//WebRoot/MyLogin.jsp=UTF-8
 encoding//WebRoot/login.jsp=UTF-8
+encoding//WebRoot/pages/college/evaluation_statistics.jsp=UTF-8
+encoding//WebRoot/pages/college/inforMaintenance1.jsp=UTF-8
+encoding//WebRoot/pages/college/rate.jsp=UTF-8
 encoding//WebRoot/pages/evaluate/pages/evaluate.jsp=UTF-8
-encoding//WebRoot/scoreinfo.jsp=UTF-8
-encoding//WebRoot/stuevaluate.jsp=UTF-8
-encoding//WebRoot/success.jsp=UTF-8
 encoding/<project>=UTF-8

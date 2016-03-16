@@ -21,6 +21,13 @@ $(document).ready(function (){
   $(".menu ul li").menu();
 }); 
 </script> 
+
+<script type="text/javascript">
+function ale()
+{
+   alert("请先对您的所有课程进行评价！");
+}
+</script>
 </head>
 
 <body>
@@ -54,7 +61,20 @@ $(document).ready(function (){
                       </li>
                        <li><a href="javascript:;"><i><img src="pages/images/Thumb.png" width="29" height="29"></i><span>评价及成绩</span></a>
                                <ul style="display:none;">
-                                     <li><a href="###">查看成绩</a></li>
+                               
+                               <%
+                            		int flag1 = (Integer) session.getAttribute("allEvaluate");
+                            		if(flag1 == 1){
+                            	%>
+                            			<li><a href="${pageContext.request.contextPath}/userAction_scoreinfo.action" >查看成绩</a></li>
+                            	<%
+                            		} else{
+                            	%>
+                            			<li><a href="javascript:;" onclick="ale()">查看成绩</a></li>
+                            	<%
+                            		}
+                            	%>
+                                   
                                      <li><a href="${pageContext.request.contextPath}/userAction_stuevaluate.action" >课程评价</a></li>
                                            
                               </ul>
@@ -83,8 +103,24 @@ $(document).ready(function (){
                      </div>
                      <dl>
                          <dd>
-                              <img src="pages/images/scoreinfo.png" width="129" height="130" alt="查看成绩">
-                              <span>查看成绩</span>    
+                         		<%
+                            		int flag = (Integer) session.getAttribute("allEvaluate");
+                            		if(flag == 1){
+                            	%>
+                            			<a href="${pageContext.request.contextPath}/userAction_scoreinfo.action">
+			                              <img src="pages/images/scoreinfo.png" width="129" height="130" alt="查看成绩">
+			                            </a>
+			                            <span>查看成绩</span>
+                            	<%
+                            		} else{
+                            	%>
+                            			<a href="javascript:;" onclick="ale()">
+			                              	<img src="pages/images/scoreinfo.png" width="129" height="130" alt="查看成绩">
+			                            </a>
+			                            <span>查看成绩</span>    
+                            	<%
+                            		}
+                            	%>
                         </dd>
                         <dd>
                               <a href="${pageContext.request.contextPath}/userAction_stuevaluate.action"><img src="pages/images/courseinfo.png" width="129" height="130" alt="课程评价"></a>

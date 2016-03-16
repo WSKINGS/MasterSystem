@@ -34,11 +34,18 @@
 			<result name="error">/error.jsp</result>
 			<result name="personinfo">pages/student/inforMaintenance1.jsp</result>
 			<result name="stuevaluate">pages/student/inforModify.jsp</result>
-			<result name="scoreinfo">/scoreinfo.jsp</result>
+			<result name="score">pages/student/score.jsp</result>
 			<result name="savesuccess">pages/student/index.jsp</result>
 			<result name="evaluate">pages/evaluate/pages/evaluate.jsp</result>
-			<result name="evasave">pages/student/index.jsp</result>
-			<result name="exit">login.jsp</result>
+			<result name="evasave">pages/student/inforModify.jsp</result>
+			<result name="exit">MyLogin.jsp</result>
+			<result name="index2">pages/college/index.jsp</result>
+		</action>
+		
+		<action name="collegeAction_*" class="com.zxc.action.CollegeAction" method="{1}">
+			<result name="index">pages/college/index.jsp</result>
+			<result name="error">/error.jsp</result>
+			
 		</action>
 	</package>
 	

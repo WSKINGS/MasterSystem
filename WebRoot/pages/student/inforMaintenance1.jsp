@@ -13,6 +13,7 @@
 <link type="text/css" href="pages/css/table.css" rel="stylesheet">
 <script type="text/javascript" src="pages/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="pages/js/menu_min.js"></script>
+<script type="text/javascript" src="pages/laydate/laydate.js"></script>
 <script type="text/javascript">
 $(document).ready(function (){
   $(".menu ul li").menu();
@@ -24,13 +25,56 @@ function fun(){
 
 function back()
 {
-   document.personinfo.action="${pageContext.request.contextPath}/userAction_back.action";
-   document.personinfo.submit();
+   if(check()){
+	 document.personinfo.action="${pageContext.request.contextPath}/userAction_back.action";
+  	 document.personinfo.submit();
+   }
 }
 function save()
 {
-   document.personinfo.action="${pageContext.request.contextPath}/userAction_save.action";
-   document.personinfo.submit();
+   if(check()){
+   	   confirm('确认保存？');
+	   document.personinfo.action="${pageContext.request.contextPath}/userAction_save.action";
+	   document.personinfo.submit();
+   }
+}
+function ale()
+{
+   alert("请先对您的所有课程进行评价！");
+}
+
+function check() {
+	var name = document.personinfo.name.value;
+	var radio1 = document.personinfo.gender;
+	var gender = '';
+	for(var i1=0;i1<radio1.length;i1++){
+		if (radio1[i1].checked) {
+				gender = 'ok';
+		}
+	}
+	var birthday = document.personinfo.birthday.value;
+	var identity = document.personinfo.identity.value;
+	var number = document.personinfo.number.value;
+	var nation = document.personinfo.nation.value;
+	var college = document.personinfo.college.value;
+	var profession = document.personinfo.profession.value;
+	var duty = document.personinfo.duty.value;
+	var education = document.personinfo.education.value;
+	var graduateyear = document.personinfo.graduateyear.value;
+	var graduateuniversity = document.personinfo.graduateuniversity.value;
+	var phone = document.personinfo.phone.value;
+	var email = document.personinfo.email.value;
+	var Addr = document.personinfo.Addr.value;
+		
+	if(name!="" && gender=='ok' && birthday!="" && identity!=""
+		 && number!="" && nation!="" && college!="" && profession!=""
+		 && duty!="" && education!="" && graduateyear!="" && graduateuniversity!=""
+		 && phone!="" && email!="" && Addr!="") {
+		 return true;
+	} else{
+		alert('请完整填写！');
+		return false;
+	}
 }
 </script> 
 
@@ -68,7 +112,20 @@ function save()
                       </li>
                        <li><a href="javascript:;"><i><img src="pages/images/Thumb.png" width="29" height="29"></i><span>评价及成绩</span></a>
                                 <ul style="display:none;">
-                                <li><a href="###" >查看成绩</a></li>
+                                <%
+                            		int flag1 = (Integer) session.getAttribute("allEvaluate");
+                            		if(flag1 == 1){
+                            	%>
+                            			<li><a href="${pageContext.request.contextPath}/userAction_scoreinfo.action" >查看成绩</a></li>
+                            	<%
+                            		} else{
+                            	%>
+                            			<li><a href="javascript:;" onclick="ale()">查看成绩</a></li>
+                            	<%
+                            		}
+                            	%>
+                                
+                               <%--  <li><a href="${pageContext.request.contextPath}/userAction_scoreinfo.action" >查看成绩</a></li> --%>
                                 <li><a href="${pageContext.request.contextPath}/userAction_stuevaluate.action" class="cur" >课程评价</a></li><strong></strong>
      
                             </ul>
@@ -91,29 +148,82 @@ function save()
                     	int id = student.getId();
                      %>
                     
-                    <form name="personinfo" method="post">
+                    <form name="personinfo" method="post" onsubmit="return check();">
                      <table >
                           <tr class="header1">
                           	<td>
                           		<span>姓名</span>
-                          		<input name="name" type="text" value='<%=student.getName()%>' readonly="readonly">
+                          		<input name="name1" type="text" value='<%=student.getName()%>' readonly="readonly" disabled="true">
+                          		<input name="name" type="hidden" value='<%=student.getName()%>'>
                           	</td>
                           	
-                          	<td>
+                          	<%-- <td>
                           		<span>性别</span>
                           		<input name="gender" type="text" value='<%=student.getGender()%>' readonly="readonly">
-                          	</td>
+                          	</td> --%>
+                          		
+                          		<%
+                          			if(student.getGender().equals("男")){
+                          				%>
+                          				<td>
+			                          		<span style="width:50px; text-align:center;">性别</span>
+			                          		<input type="radio" name="gender" style="margin:0 12px;" checked="checked" readonly="readonly" value="男">
+			                          		<em>男</em>
+			                          		<input type="radio" name="gender" style="margin:0 12px;" readonly="readonly" value="女">
+			                          		<em>女</em>
+		                          		</td>
+                          				<%
+                          			} else{
+                          				%>
+                          				<td>
+			                          		<span style="width:50px; text-align:center;">性别</span>
+			                          		<input type="radio" name="gender" style="margin:0 12px;" readonly="readonly" value="男">
+			                          		<em>男</em>
+			                          		<input type="radio" name="gender" style="margin:0 12px;" checked="checked" readonly="readonly" value="女">
+			                          		<em>女</em>
+		                          		</td>
+                          				<%
+                          			}
+                          		%>
+                          	
+                          	
+                          	<%-- <td>
+                          		<span>出生年月</span>
+                          		<input name="birthday" type="text" value='<%=date%>'>
+                          	</td>  --%>
                           	
                           	<td>
                           		<span>出生年月</span>
-                          		<input name="birthday" type="text" value='<%=date%>'>
-                          	</td> 
+                          		<input name="birthday" type="text" placeholder="请输入日期" class="laydate-icon" onclick="laydate()" style="width:110px;" value='<%=date %>'>
+                            </td>
+                          
+                          
                           </tr>
                           <tr>
-                          	<td>
+                          	<%-- <td>
                           		<span>证件类型:</span>
                           		<input name="identity" type="text" value='<%=student.getIdentity()%>'>
+                          	</td> --%>
+                          	
+                          	<td>
+                          		<span>证件类型:</span>
+                          		<select name="identity">
+									<%
+										if(student.getIdentity().equals("学生证")){
+									%>
+										<option selected="selected" value="学生证">学生证</option>
+                          				<option value="身份证">身份证</option>
+                          			<%
+										} else{
+									%>
+										<option value="学生证">学生证</option>
+                          				<option selected="selected" value="身份证">身份证</option>
+                          			<%
+										}
+									%>                          		
+                          		</select>
                           	</td>
+                          	
                           	
                           	<td>
                           		<span>证件号:</span>
@@ -132,9 +242,28 @@ function save()
                           		<input name="college" type="text" value='<%=student.getCollege()%>'>
                           	</td>
                           	
-                          	<td>
+                          	<%-- <td>
                           		<span>职称:</span>
                           		<input name="profession" type="text" value='<%=student.getProfession()%>'> 
+                          	</td> --%>
+                          	
+                          	<td>
+                          		<span>职称:</span>
+                          		<select name="profession">
+                          			<%
+										if(student.getProfession().equals("学生")){
+									%>
+										<option selected="selected" value="学生">学生</option>
+                          				<option value="老师">老师</option>
+                          			<%
+										} else{
+									%>
+										<option value="学生">学生</option>
+                          				<option selected="selected" value="老师">老师</option>
+                          			<%
+										}
+									%>       
+                          		</select>
                           	</td>
                           	
                           	<td>
@@ -143,14 +272,34 @@ function save()
                           	</td>
                           </tr>
                           <tr>
-                          	<td>
+                          	<%-- <td>
                           		<span>最高学历:</span>
                           		<input name="education" type="text" value='<%=student.getEducation()%>'>
+                          	</td> --%>
+                          	
+                          	<td>
+                          		<span>最高学历:</span>
+                          		<select name="education">
+                          			<%
+										if(student.getEducation().equals("研究生")){
+									%>
+										<option selected="selected" value="研究生">研究生</option>
+                          				<option value="本科">本科</option>
+                          			<%
+										} else{
+									%>
+										<option value="研究生">研究生</option>
+                          				<option selected="selected" value="本科">本科</option>
+                          			<%
+										}
+									%>       
+                          		</select>
                           	</td>
                           	
                           	<td>
                           		<span>毕业年份:</span>
-                          		<input name="graduateyear" type="text" value='<%=gdate%>'>
+                          		<%-- <input name="graduateyear" type="text" value='<%=gdate%>'> --%>
+                          		<input name="graduateyear" type="text" class="laydate-icon" onclick="laydate()" style="width:110px;" value='<%=gdate %>'>
                           	</td>
                           	
                           	<td>

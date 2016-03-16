@@ -4,13 +4,19 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "manager")
 public class Manager implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -28,9 +34,8 @@ public class Manager implements Serializable{
 	private String phone;
 	private String email;
 	private String address;
-	private String role;
+	private Role role;
 	private Set<Log> log;
-	private Set<Authorization> authorization;
 	
 	public Manager() {
 	}
@@ -38,8 +43,7 @@ public class Manager implements Serializable{
 	public Manager(int id, String name, String password, int gender,
 			Date birthday, String identity, String number, String college,
 			String profession, String duty, String phone, String email,
-			String address, String role, Set<Log> log,
-			Set<Authorization> authorization) {
+			String address, Role role, Set<Log> log) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -56,7 +60,6 @@ public class Manager implements Serializable{
 		this.address = address;
 		this.role = role;
 		this.log = log;
-		this.authorization = authorization;
 	}
 
 	@Id
@@ -177,12 +180,13 @@ public class Manager implements Serializable{
 		this.address = address;
 	}
 
-	@Column(name = "role")
-	public String getRole() {
+	@ManyToOne(cascade=CascadeType.ALL , fetch=FetchType.EAGER)           
+    @JoinColumn(name="role")     //Manager类中对应外键的属性：role   
+	public Role getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(Role role) {
 		this.role = role;
 	}
 
@@ -195,17 +199,6 @@ public class Manager implements Serializable{
 
 	public void setLog(Set<Log> log) {
 		this.log = log;
-	}
-
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name = "mana_auth", joinColumns = @JoinColumn(name = "manager_id"),
-			inverseJoinColumns = @JoinColumn(name = "authorization_id"))
-	public Set<Authorization> getAuthorization() {
-		return authorization;
-	}
-
-	public void setAuthorization(Set<Authorization> authorization) {
-		this.authorization = authorization;
 	}
 	
 }

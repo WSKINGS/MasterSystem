@@ -1,3 +1,6 @@
+<%@page import="com.zxc.service.impl.CourseServiceImpl"%>
+<%@page import="com.opensymphony.xwork2.ActionContext"%>
+<%@page import="com.zxc.service.impl.StuCourseServiceImpl"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="com.zxc.domain.*"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,7 +18,13 @@
 $(document).ready(function (){
   $(".menu ul li").menu();
 }); 
-</script> 
+</script>
+<script type="text/javascript">
+function ale()
+{
+   alert("请先对您的所有课程进行评价！");
+}
+</script>
 
 </head>
 
@@ -51,7 +60,19 @@ $(document).ready(function (){
                       </li>
                        <li><a href="javascript:;" class="active"><i><img src="pages/images/Thumb.png" width="29" height="29"></i><span>评价及成绩</span></a>
                             <ul>
-                                <li><a href="###" >查看成绩</a></li>
+                            	<%
+                            		int flag1 = (Integer) session.getAttribute("allEvaluate");
+                            		if(flag1 == 1){
+                            	%>
+                            			<li><a href="${pageContext.request.contextPath}/userAction_scoreinfo.action" >查看成绩</a></li>
+                            	<%
+                            		} else{
+                            	%>
+                            			<li><a href="javascript:;" onclick="ale()">查看成绩</a></li>
+                            	<%
+                            		}
+                            	%>
+                                
                                 <li><a href="${pageContext.request.contextPath}/userAction_stuevaluate.action" class="cur" >课程评价</a></li><strong></strong>
      
                             </ul>
@@ -79,14 +100,15 @@ $(document).ready(function (){
                           </tr>
                           
                           <%
-                          
-                          	Student student = (Student) session.getAttribute("student");
-                          	Set<Course> courses = student.getCourse();
+							List<StuCourse> list = (List<StuCourse>)session.getAttribute("courseList");
+							List<Course> clist = (List<Course>) session.getAttribute("courses");
                           	int i = 0;
-                          	for (Course course : courses) {
+                          	for (StuCourse stuCourse : list) {
+								Course course = clist.get(i);
                           		i++;
+                          		System.out.println(stuCourse.getState() + "hah");
                           		if(i%2 == 0){
-                          			if(course.getState().equals("未评价")){
+                          			if(stuCourse.getState().equals("未评价")){
                           %>
                           		   <tr class="header1">
 		                          	<td><%=course.getClassname()%><br /></td>
@@ -94,7 +116,7 @@ $(document).ready(function (){
 						            <td><%=course.getName()%><br /></td>
 						            <td><%=course.getType()%><br /></td>
 						            <td><%=course.getTeacher()%><br /></td>
-						            <td><%=course.getState()%><br /></td>
+						            <td><%=stuCourse.getState()%><br /></td>
 		                          	<td><a href="${pageContext.request.contextPath}/userAction_evaluate.action?courseId=<%=course.getId()%>">进行评价</a></td>
 		                          </tr>
                           
@@ -107,7 +129,7 @@ $(document).ready(function (){
 						            <td><%=course.getName()%><br /></td>
 						            <td><%=course.getType()%><br /></td>
 						            <td><%=course.getTeacher()%><br /></td>
-						            <td><%=course.getState()%><br /></td>
+						            <td><%=stuCourse.getState()%><br /></td>
 		                          	<td><a href="${pageContext.request.contextPath}/userAction_evaluate.action?courseId=<%=course.getId()%>">修改评价</a></td>
 		                          </tr>
                           
@@ -115,7 +137,7 @@ $(document).ready(function (){
                           			}
                          
                           		} else{
-                          			if(course.getState().equals("未评价")){
+                          			if(stuCourse.getState().equals("未评价")){
                           
                           %>
                           		  <tr class="">
@@ -124,7 +146,7 @@ $(document).ready(function (){
 						            <td><%=course.getName()%><br /></td>
 						            <td><%=course.getType()%><br /></td>
 						            <td><%=course.getTeacher()%><br /></td>
-						            <td><%=course.getState()%><br /></td>
+						            <td><%=stuCourse.getState()%><br /></td>
 		                          	<td><a href="${pageContext.request.contextPath}/userAction_evaluate.action?courseId=<%=course.getId()%>">进行评价</a></td>
 		                          </tr>
                           <%
@@ -136,7 +158,7 @@ $(document).ready(function (){
 						            <td><%=course.getName()%><br /></td>
 						            <td><%=course.getType()%><br /></td>
 						            <td><%=course.getTeacher()%><br /></td>
-						            <td><%=course.getState()%><br /></td>
+						            <td><%=stuCourse.getState()%><br /></td>
 		                          	<td><a href="${pageContext.request.contextPath}/userAction_evaluate.action?courseId=<%=course.getId()%>">修改评价</a></td>
 		                          </tr>
                           <%
@@ -146,7 +168,26 @@ $(document).ready(function (){
                           %>
        
                      </table>
-                     <div class="btn-center"><a href="###" class="tj" >提交</a></div>
+                     
+                     <%
+                     
+                     	/* List<StuCourse> list = (List<StuCourse>)session.getAttribute("courseList");
+						List<Course> clist = (List<Course>) session.getAttribute("courses"); */
+                        int flag = (Integer)session.getAttribute("allEvaluate");
+                        for (int j = 0; j < list.size() ; j++) {
+							if(list.get(j).getState().equals("已评价") && j != list.size() - 1){
+							} else if(list.get(j).getState().equals("已评价") && j == list.size() - 1){
+								flag = 1;
+							} else{
+								break;
+							}
+                        }
+                     	session.setAttribute("allEvaluate", flag);
+                     %>
+                     
+					<div class="btn-center">
+						<a href="${pageContext.request.contextPath}/userAction_submitback.action" class="tj" onclick="return window.confirm('确定提交？')" >提交</a>
+					</div>                     
                      
                </div>
 

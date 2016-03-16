@@ -18,16 +18,16 @@ public class Authorization implements Serializable{
 
 	private int id;
 	private String authorizations;
-	private Set<Manager> manager;
+	private Set<Role> role;
 	
 	public Authorization() {
 	}
 
-	public Authorization(int id, String authorizations, Set<Manager> manager) {
+	public Authorization(int id, String authorizations, Set<Role> role) {
 		super();
 		this.id = id;
 		this.authorizations = authorizations;
-		this.manager = manager;
+		this.role = role;
 	}
 
 	@Id
@@ -48,13 +48,14 @@ public class Authorization implements Serializable{
 	public void setAuthorizations(String authorizations) {
 		this.authorizations = authorizations;
 	}
+	
 	@ManyToMany(mappedBy = "authorization" , fetch = FetchType.EAGER)
-	public Set<Manager> getManager() {
-		return manager;
+	public Set<Role> getRole() {
+		return role;
 	}
 
-	public void setManager(Set<Manager> manager) {
-		this.manager = manager;
+	public void setRole(Set<Role> role) {
+		this.role = role;
 	}
 
 	

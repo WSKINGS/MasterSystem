@@ -16,16 +16,41 @@ public class StuCourse implements Serializable {
 	private int studentId;
 	private int courseId;
 	private double score;
+	private String suggestion;
+	private String state;
+	private double grade;
+
+	@Column(name = "grade")
+	public double getGrade() {
+		return grade;
+	}
+
+	public void setGrade(double grade) {
+		this.grade = grade;
+	}
+
+	@Column(name = "state")
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
 
 	public StuCourse() {
 
 	}
 
-	public StuCourse(int studentId, int courseId, double score) {
+	public StuCourse(int studentId, int courseId, double score,
+			String suggestion, String state, double grade) {
 		super();
 		this.studentId = studentId;
 		this.courseId = courseId;
 		this.score = score;
+		this.suggestion = suggestion;
+		this.state = state;
+		this.grade = grade;
 	}
 
 	@Id
@@ -55,6 +80,15 @@ public class StuCourse implements Serializable {
 
 	public void setScore(double score) {
 		this.score = score;
+	}
+
+	@Column(name="suggestion")
+	public String getSuggestion() {
+		return suggestion;
+	}
+
+	public void setSuggestion(String suggestion) {
+		this.suggestion = suggestion;
 	}
 
 }
